@@ -1,0 +1,35 @@
+tags:
+  - ACCIDENT ANALYTICS
+summary: Get hourly accident data
+description: Retrieve accident data grouped by hour for the last 24 hours
+responses:
+  200:
+    description: Successfully retrieved hourly data
+    schema:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              hour:
+                type: string
+                example: "14:00"
+              count:
+                type: integer
+                example: 5
+              avg_response_time:
+                type: number
+                example: 12.5
+        total_accidents:
+          type: integer
+          example: 45
+  500:
+    description: Internal server error
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error fetching hourly data"

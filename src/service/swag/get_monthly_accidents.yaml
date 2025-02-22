@@ -1,0 +1,44 @@
+tags:
+  - ACCIDENT ANALYTICS
+summary: Get monthly accident data
+description: Retrieve accident data grouped by month for the last 12 months
+responses:
+  200:
+    description: Successfully retrieved monthly data
+    schema:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              month:
+                type: string
+                example: "2025-02"
+              total:
+                type: integer
+                example: 45
+              avg_response_time:
+                type: number
+                example: 15.3
+              road_type_breakdown:
+                type: object
+                properties:
+                  Highway:
+                    type: integer
+                    example: 20
+                  Local:
+                    type: integer
+                    example: 25
+        total_accidents:
+          type: integer
+          example: 540
+  500:
+    description: Internal server error
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error fetching monthly data"

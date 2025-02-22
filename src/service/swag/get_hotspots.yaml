@@ -1,0 +1,52 @@
+tags:
+  - ACCIDENT ANALYTICS
+summary: Get accident hotspots
+description: Retrieve information about accident-prone locations
+produces:
+  - "application/json"
+responses:
+  200:
+    description: Successfully retrieved hotspots data
+    schema:
+      type: object
+      properties:
+        hotspots:
+          type: array
+          items:
+            type: object
+            properties:
+              location:
+                type: object
+                properties:
+                  latitude:
+                    type: number
+                    example: 18.5204
+                  longitude:
+                    type: number
+                    example: 73.8567
+              road_type:
+                type: string
+                example: "Highway"
+              total_accidents:
+                type: integer
+                example: 12
+              high_severity_percentage:
+                type: number
+                example: 33.33
+              avg_response_time:
+                type: number
+                example: 14.5
+              last_accident:
+                type: string
+                example: "2025-02-22 14:30"
+        total_hotspots:
+          type: integer
+          example: 10
+  500:
+    description: Internal server error
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error fetching hotspots data"

@@ -1,0 +1,44 @@
+tags:
+  - ACCIDENT ANALYTICS
+summary: Get daily accident data
+description: Retrieve accident data grouped by day for the last 7 days
+responses:
+  200:
+    description: Successfully retrieved daily data
+    schema:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                example: "2025-02-22"
+              total:
+                type: integer
+                example: 15
+              severity_breakdown:
+                type: object
+                properties:
+                  High:
+                    type: integer
+                    example: 5
+                  Medium:
+                    type: integer
+                    example: 7
+                  Low:
+                    type: integer
+                    example: 3
+        total_accidents:
+          type: integer
+          example: 105
+  500:
+    description: Internal server error
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error fetching daily data"

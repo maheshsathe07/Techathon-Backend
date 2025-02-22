@@ -1,0 +1,62 @@
+tags:
+  - ADD-LOCATION-DATA
+summary: "Add new location data"
+description: "Add new location data with timestamp and coordinates"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 18.5204
+        longitude:
+          type: number
+          format: double
+          example: 73.8567
+responses:
+  201:
+    description: "Location data added successfully"
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Location data added successfully"
+        location_id:
+          type: string
+          example: "67b9c3ed831a21155b00aa57"
+  400:
+    description: "Invalid input or missing fields"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing required fields: latitude, longitude"
+  415:
+    description: "Unsupported Media Type"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Content-Type must be application/json"
+  500:
+    description: "Internal server error"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Error adding location data: <error details>"
