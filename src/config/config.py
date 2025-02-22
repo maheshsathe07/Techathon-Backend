@@ -37,3 +37,10 @@ def get_collection():
     db = get_db()
     collection_name = os.getenv("MONGODB_COLLECTION_NAME")
     return db[collection_name]
+
+
+def get_collection_1():
+    """Return the MongoDB collection object."""
+    db = get_db()
+    collection_name = os.getenv("MONGODB_COLLECTION_NAME_1")
+    return db[collection_name]

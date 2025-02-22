@@ -1,0 +1,41 @@
+tags:
+  - Hospitals
+summary: Fetch the top 5 nearest hospitals based on latitude and longitude
+parameters:
+  - name: latitude
+    in: query
+    type: number
+    required: true
+    description: Latitude of the biker's location
+  - name: longitude
+    in: query
+    type: number
+    required: true
+    description: Longitude of the biker's location
+responses:
+  200:
+    description: A list of the top 5 nearest hospitals
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+        nearest_hospitals:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              latitude:
+                type: number
+              longitude:
+                type: number
+              contact_number:
+                type: string
+              address:
+                type: string
+              distance:
+                type: number
+  400:
+    description: Invalid input
